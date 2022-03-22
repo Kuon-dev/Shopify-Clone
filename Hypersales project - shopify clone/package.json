@@ -1,0 +1,24 @@
+{
+  "name": "hypersales-project---shopify-clone",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "vite:watch": "vite build --watch",
+    "preview": "vite preview --port 5050"
+  },
+  "dependencies": {
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "vue": "^3.2.31"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.2",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23",
+    "vite": "^2.8.4",
+    "vue-cli-plugin-tailwind": "~3.0.0"
+  }
+}
