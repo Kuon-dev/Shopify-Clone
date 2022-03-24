@@ -6,15 +6,18 @@ import "./assets/tailwind.css";
 </script>
 
 <template>
+<div class="px-36">
   <div class="background-yellow">
     <header>
       <Header />
     </header>
-
+  </div>
+  <div>
     <main>
       <p>Hello world</p>
     </main>
   </div>
+</div>
 </template>
 
 <style>
