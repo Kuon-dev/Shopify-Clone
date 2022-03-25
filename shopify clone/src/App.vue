@@ -17,6 +17,7 @@ import "./assets/tailwind.css";
       <p>Hello world</p>
     </main>
   </div>
+  <router-view />
 </div>
 </template>
 
