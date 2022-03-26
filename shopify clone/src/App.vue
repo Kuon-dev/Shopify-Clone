@@ -8,16 +8,8 @@ import "./assets/tailwind.css";
 <template>
 <div class="px-36">
   <div class="background-yellow">
-    <header>
-      <Header />
-    </header>
+    <router-view />
   </div>
-  <div>
-    <main>
-      <p>Hello world</p>
-    </main>
-  </div>
-  <router-view />
 </div>
 </template>
 
