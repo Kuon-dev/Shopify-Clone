@@ -10,17 +10,27 @@ export default {
             isMarketHidden: true,
             isManageHidden: true,
             isLearnHidden: true,
+
+            scrollPosition: null,
         }
+        
     },
     methods: {
         toggle: function(event) {
             event.target.classList.toggle('hidden');
+        },
+        updateBgOnScroll() {
+            this.scrollPosition = window.scrollY;
         }
-    }
+    },
+    mounted() {
+    window.addEventListener('scroll', this.updateBgOnScroll);
+  }
 }
 </script>
 <template>
-<div>
+  
+<div v-bind:class="{bgYellow: scrollPosition < 700, bgWhite: scrollPosition > 699}">
     <div class="flex flex-row px-20 h-20">
         <div class="flex flex-row">
             <img src="../assets/images/shopify-navbar.png" alt="shopify-navbar image" class="h-[150%] -mt-5">
@@ -241,7 +251,8 @@ export default {
             </ul>
         </div>
         <!-- header contents on right -->
-        <div class="flex flex-row float-right ml-[auto]">
+        <div class="w-[30rem]"></div>
+        <div class="flex flex-row float-right right-0 ml-[auto]">
              <ul class="ml-5 flex flex-row px-5">
                 <li class="px-3 mt-7">
                     <div class="flex flex-row">
@@ -325,7 +336,7 @@ export default {
                 </li>
                 <li class="px-3 mt-4">
                     <div class="flex flex-row">
-                        <button class="font-['Arial'] flex flex-row header-font h-[3rem] bg-[#008060] text-white p-3 rounded-md drop-shadow-xl">
+                        <button class="font-['Arial'] flex flex-row text-[1.1rem] text-white h-[3rem] bg-[#008060] text-white p-3 rounded-md drop-shadow-xl font-semibold">
                             Get Started
                         </button>
                     </div>
@@ -343,5 +354,27 @@ export default {
     color: #42474c;
     font-weight: 550;
     font-size: 1.1rem;
+}
+.bgYellow {
+    background-color: #fbf7ed;
+    z-index: 100;
+     position: fixed
+}
+
+.bgWhite {
+    background-color: white;
+    z-index: 100;
+    position: fixed;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07));
+}
+
+.container-flex-h {
+    display: flex;
+    direction: row;
+}
+
+.container-flex-v {
+    display: flex;
+    direction: column;
 }
 </style>
