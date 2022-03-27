@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-    <div id="pg-container">
+    <div id="pg-container" class="container_padding">
         <navbar />
         <section class="background-yellow">
             <div class="container-flex-h pt-[3.5rem] pb-[3.2rem] px-[5rem]">
@@ -517,5 +517,9 @@ video::-webkit-media-controls-panel {
     font-family: "Arial";
     font-weight: bold;
     color: #008060;
+}
+
+@media (min-width: 1536px){
+  .container_padding {padding: 0 7.5rem 0 7.5rem}
 }
 </style>

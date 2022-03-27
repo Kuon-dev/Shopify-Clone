@@ -5,9 +5,7 @@ import "./assets/tailwind.css";
 </script>
 
 <template>
-  <div class="container_padding">
   <router-view/>
-  </div>
 </template>
 
 <style>
@@ -15,7 +13,7 @@ import "./assets/tailwind.css";
   background-color: #fbf7ed;
 }
 
-@media (min-width: 1536px){
-  .container_padding {padding: 0 7.5rem 0 7.5rem}
+.body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>

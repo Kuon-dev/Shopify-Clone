@@ -330,7 +330,7 @@ export default {
                 <li class="px-3 mt-7">
                     <div class="flex flex-row">
                         <button class="font-['Arial'] flex flex-row header-font">
-                            Login
+                            <router-link to="/login">Login</router-link>
                         </button>
                     </div>
                 </li>

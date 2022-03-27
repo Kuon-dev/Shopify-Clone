@@ -131,9 +131,10 @@ export default {
 .footer-containerHeader ul li:hover {
     border-color: white;
     border-style: solid;
-    border-bottom-width: 0.05rem;
+    border-bottom: 0.15rem solid;
     position: relative;
     box-sizing: border-box;
+    margin-bottom: -0.15rem;
 }
 
 .footer-headerLB {
