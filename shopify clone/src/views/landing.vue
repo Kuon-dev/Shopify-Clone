@@ -1,9 +1,11 @@
 <script>
 import navbar from "../components/Header.vue";
+import Footer from '../components/Footer.vue';
 
 export default {
     components: {
-        navbar, 
+        navbar,
+        Footer, 
     },
     data () {
         return {
@@ -40,7 +42,7 @@ export default {
         <navbar />
         <section class="background-yellow">
             <div class="container-flex-h pt-[3.5rem] pb-[3.2rem] px-[5rem]">
-                <div class="basis-5/12 p-5 pr-[5rem]">
+                <div class="basis-5/12 p-5 pr-[5rem] mt-10">
                     <h1 class="text-5xl font-bold leading-[1.4] color-green-80 tracking-tight">The platform commerce is built on</h1>
                     <br>
                     <p class="text-[1.4rem] leading-7 text-[#6b7177] tracking-tight pr-[3rem]">Millions of the world's most successful brands trust Shopify to sell, ship and process payments anywhere.</p>
@@ -54,7 +56,7 @@ export default {
                         <p class="text-xs pr-[4rem]">Try Shopify free for 14 days, no credit card required. By entering your email, you agree to receive marketing emails from Shopify.</p>
                     </div>
                 </div>
-                <div class="basis-7/12">
+                <div class="basis-7/12 mt-10">
                     <img src="../assets/images/hero-product.png" alt="products" class="height-1/2 bg-contain">
                 </div>
             </div>
@@ -337,6 +339,7 @@ export default {
                 </div>
             </div>
         </section>
+        <Footer />
     </div>
 </template>
 
