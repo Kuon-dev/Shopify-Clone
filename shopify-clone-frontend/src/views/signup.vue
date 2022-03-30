@@ -14,9 +14,8 @@
                 <form class="mt-3" @submit.prevent="CreateAccount(userData)"  >
                     <label>Email</label>
                     <input type="email" required v-model="userData.email" class="formContainer" id="emailSignupInput">
-                    <br>
-                    <br>
-                    <label>Password</label>
+                    <p class="text-red-500 text-[0.9rem] hidden -px-2" id="EmailRegisteredWarn">Email is already registered</p>
+                    <p class="pt-3">Password</p>
                     <input type="password" 
                     required v-model="userData.password" 
                     class="formContainer" 
@@ -46,8 +45,8 @@
 </template>
 
 <script>
-import axios from "axios";
-
+import { inject } from 'vue';
+import axios from 'axios';
 
 export default {
     data () {
@@ -55,21 +54,47 @@ export default {
             isWarningHidden: true,
             userData: {
                 email: '',
+                username: '',
                 password: '',
             },
             csrf_token: document.head.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            
         }
     },
+    
     methods: {
-
         CreateAccount(userinfo) {
-            axios({
-                method: "POST",
-                url: "http://127.0.0.1:8000/api/users",
-                data: userinfo,
+            var usname = userinfo.email // replace username as email but without domain anme
+            var name   = usname.substring(0, usname.lastIndexOf("@")); // removeremoves domain name
+            userinfo.username = name //assign it
+
+            // post data to database 
+            axios.post("http://127.0.0.1:8000/api/users", userinfo)
+            .then(response => {
+                console.log(response)
+                this.$router.push('/') //redirect users
             })
-            .then(response => console.log(response))
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                if (error.response.status == 500) {
+                    var errorObj = JSON.stringify(error.response.data)
+                    var Err = (JSON.parse(errorObj).message)
+                    
+                    // regex for filtering error codes + violation title
+                    var matches = Err.match(/[0-9]+(\s+([a-zA-Z]+\s+)+)/g);
+                    console.log(matches)
+                    for (let i = 0; i < matches.length; i++) {
+                        // email is not unique, raise warn
+                        if (matches[i] == "1062 Duplicate entry ") {
+                            document.getElementById("EmailRegisteredWarn").classList.remove("hidden")
+                        }
+                        // other errors can be accessed here
+                    }
+                // end of if statement for code 500
+                }
+            // end of catch clause
+            })
+        // end of create account function
         }
     },
     mounted() {

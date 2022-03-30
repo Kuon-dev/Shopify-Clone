@@ -110,7 +110,12 @@ export default {
                     if (userinfo.email == email && userinfo.password == password) {
                         console.log("Login successful")
                         tcase.push("pass")
-                        this.$router.push('/')
+                        this.$router.push(({
+                            name: 'homepg',
+                            params: {
+                                items: userinfo
+                            }
+                        }))
                         break;
                     }
                 }

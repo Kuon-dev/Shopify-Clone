@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "814ef6403cd37c7f3b3ef4bc7f5ab246",
+    "content-hash": "e24fad7ccecd39045549483c80d5ad58",
     "packages": [
         {
             "name": "brick/math",
@@ -507,6 +507,51 @@
                 }
             ],
             "time": "2022-02-20T15:07:15+00:00"
+        },
+        {
+            "name": "gcorp_llc/cors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gcorp-cc/cors.git",
+                "reference": "d3df38da64959517b9d421b4978c1cc1ca9ae38e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gcorp-cc/cors/zipball/d3df38da64959517b9d421b4978c1cc1ca9ae38e",
+                "reference": "d3df38da64959517b9d421b4978c1cc1ca9ae38e",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Gcorp_LLC\\Cors\\CorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gcorp_LLC\\Cors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "hossein Eftekharrad",
+                    "email": "hosseinradvictor@gmail.com"
+                }
+            ],
+            "description": "A package designed by gcorp llc to solve the problem of communication with cors",
+            "support": {
+                "issues": "https://github.com/gcorp-cc/cors/issues",
+                "source": "https://github.com/gcorp-cc/cors/tree/master"
+            },
+            "time": "2021-08-18T19:57:43+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -7728,7 +7773,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "gcorp_llc/cors": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
