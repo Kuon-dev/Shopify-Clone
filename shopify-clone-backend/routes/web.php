@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +13,36 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
+
+Route::get('/users', [UserController::class, 'index']);
+
+
+/*
 Route::get('/users', function () {
     return view('user-data');
 });
+*/
+
+// Route to users - JSON object
+/*
+Route::get('/users', function () {
+    return response() ->json([
+        'email' => 'test@gmail.com',
+        'password' => '123456'
+    ]);
+});
+*/
+
+// Route redirect immediate - function
+/*
+Route::get('/users', function () {
+    return redirect('/');
+});
+*/
+

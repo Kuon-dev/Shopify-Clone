@@ -23,22 +23,23 @@
 
                 <p class="mt-4 text-[0.9rem]">
                     New to Shopify? 
-                    <span><a href="#" class="signUpLink">Get started</a></span>
+                    <span><router-link to="/signup">Get started</router-link></span>
                 </p>
                 </form>
 
                  <!-- password form -->
-                <form id="passwordForm" @submit.prevent="handleSubmitPassword" class="hidden">
+                <form id="passwordForm" @submit.prevent="handleSubmitPassword(userinfo)" class="hidden">
                 <h1 class="text-2xl font-bold">Log in</h1>
-                <p class="mt-1 text-[#6d7175]">Continue to Shopify</p>
+                <p class="mt-1">Continue to Shopify</p>
                 <div class="container-flex-hor mt-[2rem]">
                     <p class="text-[0.9rem]">{{userinfo.email}}</p>
                     <button class="signUpLink divRight" @click="handleReEnterEmail">Change email</button>
                 </div>
                 <div class="loginPanelInputContainer border-[1px] mt-5">
                     <p>Password</p>
-                    <input type="email" class="">
+                    <input type="password" required v-model="userinfo.password" class="">
                 </div>
+                <p class="text-red-500 pt-2 text-[0.9rem] hidden" id="incorrectInfoWarn">Incorrect credentials</p>
                 <div class="pt-5">
                     <button class="loginPanelSubmitBtn" type="Submit">Login</button>
                 </div>
@@ -62,6 +63,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
     data () {
         return {
@@ -87,6 +89,40 @@ export default {
             showPw.classList.add("hidden")
             hideEm.classList.remove("hidden")
 
+        },
+
+        handleSubmitPassword(userinfo) {
+            axios.get('http://127.0.0.1:8000/api/users')
+            .then((response) => {
+                // fetched data
+                //console.log(response.data)
+
+                var tcase = []
+                // loop within the json 
+                for (let i=0; i<response.data.length; i++) {
+                    var email = response.data[i].email;
+                    var password = response.data[i].password;
+                    // console.log(email, password)
+                    // console.log(userinfo.password)
+                    
+
+                    // direct user when email and password matches
+                    if (userinfo.email == email && userinfo.password == password) {
+                        console.log("Login successful")
+                        tcase.push("pass")
+                        this.$router.push('/')
+                        break;
+                    }
+                }
+
+                if (tcase.length < 1) {
+                    console.log("Incorrect password")
+                    // display output 
+                    document.getElementById('incorrectInfoWarn').classList.remove("hidden")
+                }
+
+            })
+            .catch(error => console.log(error))
         }
     }
 }
@@ -94,7 +130,7 @@ export default {
 
 <style>
 .login-bg {
-    background-image: url("../assets/images/login-bg.png");
+    background-image: url("../assets/images/panel-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -169,5 +205,14 @@ export default {
     font-size: 0.875rem;
     margin-top: 3rem;
     color: #637381;
+}
+
+.panelCaptions {
+    color: #6d7175;
+}
+
+.panelCaptions2 {
+    color: #6d7175;
+    font-size: 0.875rem;
 }
 </style>

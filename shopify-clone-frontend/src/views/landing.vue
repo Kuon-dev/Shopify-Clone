@@ -49,7 +49,7 @@ export default {
                     <div class="pr-[3rem] py-7">
                         <input type="text" class="border-[1px] rounded-md border-black focus:border-green-800 h-[3.5rem] w-[17rem] px-5 focus:ring-1 focus:ring-[#004c3f] focus:outline-none" placeholder="Enter your email address">
                         <button class="drop-shadow-xl font-semibold getStartedBtn">
-                            Get Started
+                             <router-link to="/signup">Get Started</router-link>
                         </button>
                     </div>
                     <div>
@@ -331,7 +331,9 @@ export default {
                         <p class="text-center text-lg px-[23rem]">Try Shopify for free, and explore all the tools and services you need to start, run, and grow your business.</p>
                     </div>
                     <div class="divCenter mt-5">
-                    <button class="getStartedBtn font-bold">Get Started</button>
+                    <button class="getStartedBtn font-bold">
+                         <router-link to="/signup">Get Started</router-link>
+                    </button>
                     </div>
                     <div>
                         <h1 class="text-right backToTop">Back to top</h1>

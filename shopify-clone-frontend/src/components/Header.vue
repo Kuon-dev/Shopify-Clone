@@ -337,7 +337,7 @@ export default {
                 <li class="px-3 mt-4">
                     <div class="flex flex-row">
                         <button class="font-['Arial'] flex flex-row text-[1.1rem] text-white h-[3rem] bg-[#008060] text-white p-3 rounded-md drop-shadow-xl font-semibold">
-                            Get Started
+                            <router-link to="/signup">Get Started</router-link>
                         </button>
                     </div>
                 </li>
