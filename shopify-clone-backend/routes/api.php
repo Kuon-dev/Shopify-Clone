@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\users;
+use App\Models\products;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +52,21 @@ Route::put('/users/{users}', function (users $users) {
     ]);
 });
 
-// Session 
+// products
+Route::get('/products', function () {
+    return products::all();
+});
+
+Route::post('/products', function () {
+    request() ->validate([
+        'product_name' => 'required',
+        'quantity' => 'required',
+        'description' => 'required',
+    ]);
+
+    return products::create([
+        'product_name' => request('product_name'),
+        'quantity' => request('quantity'),
+        'description' => request('description'),
+    ]);
+});

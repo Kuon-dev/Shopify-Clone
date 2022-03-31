@@ -13,7 +13,7 @@
         <div class="divCenter basis-1/3">
         <div class="container-flex-hor AdminSearchBar">
             <img src="../assets/images/search.png" class="">
-            <input type="text" class="AdminSearchBarBg" placeholder="Search..">
+            <input type="text" class="AdminSearchBarBg w-full" placeholder="Search..">
         </div>
         </div>
         <div class="basis-1/3">

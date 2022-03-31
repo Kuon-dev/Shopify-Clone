@@ -6,7 +6,22 @@ POST http://127.0.0.1:8000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-        "username": "John1234",
-        "email": "user1234@example.com",
+        "username": "user",
+        "email": "user@example.com",
         "password": "password"
+}
+
+### 
+GET http://127.0.0.1:8000/api/products HTTP/1.1
+
+
+### 
+
+POST http://127.0.0.1:8000/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+        "products": "Shirt",
+        "quantity": "3",
+        "description": "A normal T-Shirt"
 }

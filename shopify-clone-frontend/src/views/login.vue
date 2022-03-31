@@ -116,7 +116,7 @@ export default {
                         // });
                         // i want to make a local storage session but I don't know how even after
                         // watching a lot of tutorials 
-                        console.log(res)
+                        console.log()
                         this.$router.push(({
                             name: 'homepg',
                             params: {

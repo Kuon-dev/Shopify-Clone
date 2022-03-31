@@ -48,4 +48,6 @@ export default {
 .navlink li {
     padding: 0.2rem 0;
 }
+
+
 </style>
