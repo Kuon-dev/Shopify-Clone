@@ -52,6 +52,7 @@ export default {
         <adminsidebar/>
     </div>
     <div class="pt-[1rem] pl-[15rem] flex flex-row">
+        <!-- add products here  -->
         <div class="basis-1/2">
             <form class="addProduct" @submit.prevent="handleSubmitProducts(productData)">
                 <h1 class="text-3xl pb-5">Add product</h1>

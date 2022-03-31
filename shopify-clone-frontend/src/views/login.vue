@@ -1,67 +1,3 @@
-<template>
-<div id="login">
-    <div id="bg" class="login-bg">
-        <div class="loginPanelContainer">
-            <div class="loginPanel">
-                <button>
-                    <router-link to="/">
-                    <img src="../assets/images/shopify-navbar.png" alt="shopify-navbar image" class="h-32 -mt-5">
-                    </router-link>
-                </button>
-
-                <!-- email form -->
-                <form id="emailForm" @submit.prevent="handleSubmit(userinfo.email)">
-                <h1 class="text-2xl font-bold">Log in</h1>
-                <p class="mt-1 text-[#6d7175]">Continue to Shopify</p>
-                <div class="loginPanelInputContainer border-[1px] mt-4">
-                    <p>Email</p>
-                    <input type="email" required v-model="userinfo.email" novalidate class="">
-                </div>
-                <div class="pt-5">
-                    <button class="loginPanelSubmitBtn" type="Submit">Next</button>
-                </div>
-
-                <p class="mt-4 text-[0.9rem]">
-                    New to Shopify? 
-                    <span><router-link to="/signup">Get started</router-link></span>
-                </p>
-                </form>
-
-                 <!-- password form -->
-                <form id="passwordForm" @submit.prevent="handleSubmitPassword(userinfo)" class="hidden">
-                <h1 class="text-2xl font-bold">Log in</h1>
-                <p class="mt-1">Continue to Shopify</p>
-                <div class="container-flex-hor mt-[2rem]">
-                    <p class="text-[0.9rem]">{{userinfo.email}}</p>
-                    <button class="signUpLink divRight" @click="handleReEnterEmail">Change email</button>
-                </div>
-                <div class="loginPanelInputContainer border-[1px] mt-5">
-                    <p>Password</p>
-                    <input type="password" required v-model="userinfo.password" class="">
-                </div>
-                <p class="text-red-500 pt-2 text-[0.9rem] hidden" id="incorrectInfoWarn">Incorrect credentials</p>
-                <div class="pt-5">
-                    <button class="loginPanelSubmitBtn" type="Submit">Login</button>
-                </div>
-
-                <p class="pt-10 text-[0.9rem]">
-                    <a href="#" class="signUpLink">Forgot password?</a>
-                </p>
-                </form>
-
-                <div class="divRight loginPanelFooter">
-                    <ul class="container-flex-hor gap-8">
-                        <li>Help</li>
-                        <li>Privacy</li>
-                        <li>Terms</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</template>
-
 <script>
 import axios from "axios";
 export default {
@@ -148,6 +84,70 @@ export default {
     }
 }
 </script>
+
+<template>
+<div id="login">
+    <div id="bg" class="login-bg">
+        <div class="loginPanelContainer">
+            <div class="loginPanel">
+                <button>
+                    <router-link to="/">
+                    <img src="../assets/images/shopify-navbar.png" alt="shopify-navbar image" class="h-32 -mt-5">
+                    </router-link>
+                </button>
+
+                <!-- email form -->
+                <form id="emailForm" @submit.prevent="handleSubmit(userinfo.email)">
+                <h1 class="text-2xl font-bold">Log in</h1>
+                <p class="mt-1 text-[#6d7175]">Continue to Shopify</p>
+                <div class="loginPanelInputContainer border-[1px] mt-4">
+                    <p>Email</p>
+                    <input type="email" required v-model="userinfo.email" novalidate class="">
+                </div>
+                <div class="pt-5">
+                    <button class="loginPanelSubmitBtn" type="Submit">Next</button>
+                </div>
+
+                <p class="mt-4 text-[0.9rem]">
+                    New to Shopify? 
+                    <span><router-link to="/signup">Get started</router-link></span>
+                </p>
+                </form>
+
+                 <!-- password form -->
+                <form id="passwordForm" @submit.prevent="handleSubmitPassword(userinfo)" class="hidden">
+                <h1 class="text-2xl font-bold">Log in</h1>
+                <p class="mt-1">Continue to Shopify</p>
+                <div class="container-flex-hor mt-[2rem]">
+                    <p class="text-[0.9rem]">{{userinfo.email}}</p>
+                    <button class="signUpLink divRight" @click="handleReEnterEmail">Change email</button>
+                </div>
+                <div class="loginPanelInputContainer border-[1px] mt-5">
+                    <p>Password</p>
+                    <input type="password" required v-model="userinfo.password" class="">
+                </div>
+                <p class="text-red-500 pt-2 text-[0.9rem] hidden" id="incorrectInfoWarn">Incorrect credentials</p>
+                <div class="pt-5">
+                    <button class="loginPanelSubmitBtn" type="Submit">Login</button>
+                </div>
+
+                <p class="pt-10 text-[0.9rem]">
+                    <a href="#" class="signUpLink">Forgot password?</a>
+                </p>
+                </form>
+
+                <div class="divRight loginPanelFooter">
+                    <ul class="container-flex-hor gap-8">
+                        <li>Help</li>
+                        <li>Privacy</li>
+                        <li>Terms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
 
 <style>
 .login-bg {
