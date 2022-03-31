@@ -1,49 +1,3 @@
-<template>
-  <div>
-      <div class="login-bg">
-          <div class="SignUpPanelContainer">
-              <div class="loginPanel">
-                <button>
-                    <router-link to="/">
-                    <img src="../assets/images/shopify-navbar.png" alt="shopify-navbar image" class="h-32 -mt-5">
-                    </router-link>
-                </button>
-                <h1 class="text-2xl font-bold">Create a Shopify account</h1>
-                <p class="panelCaptions mt-1">The ecommerce platform made for you</p>
-                
-                <form class="mt-3" @submit.prevent="CreateAccount(userData)"  >
-                    <label>Email</label>
-                    <input type="email" required v-model="userData.email" class="formContainer" id="emailSignupInput">
-                    <p class="text-red-500 text-[0.9rem] hidden -px-2" id="EmailRegisteredWarn">Email is already registered</p>
-                    <p class="pt-3">Password</p>
-                    <input type="password" 
-                    required v-model="userData.password" 
-                    class="formContainer" 
-                    @click="isWarningHidden = false" 
-                    >
-                    
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <p class="leading-5 panelCaptions2 pt-5" id="pwSignupInputWarning" :class="{hidden: isWarningHidden}">Your password must be at least 5 characters, and can’t begin or end with a space.</p>
-                    <button type="submit" class="createAccBtn AccBtnGray">Create Shopify account</button>
-                </form>
-                <div class="pt-7">
-                    <p class="panelCaptions2">By proceeding, you agree to the <span class="signUpLink">Terms and Conditions</span></p>
-                    <p class="panelCaptions2">Already have a Shopify account? <span class="signUpLink"><router-link to="/login">Log in</router-link></span></p>
-                </div>
-
-                <div class="divRight loginPanelFooter">
-                    <ul class="container-flex-hor gap-8">
-                        <li>Help</li>
-                        <li>Privacy</li>
-                        <li>Terms</li>
-                    </ul>
-                </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</template>
-
 <script>
 import { inject } from 'vue';
 import axios from 'axios';
@@ -76,9 +30,10 @@ export default {
             })
             .catch(error => {
                 console.log(error)
+                // if the error code is 500 (database error)
                 if (error.response.status == 500) {
                     var errorObj = JSON.stringify(error.response.data)
-                    var Err = (JSON.parse(errorObj).message)
+                    var Err = (JSON.parse(errorObj).message) // identify the cause of the error code 500
                     
                     // regex for filtering error codes + violation title
                     var matches = Err.match(/[0-9]+(\s+([a-zA-Z]+\s+)+)/g);
@@ -102,6 +57,57 @@ export default {
     }
 }
 </script>
+
+<template>
+  <div>
+      <div class="login-bg">
+          <div class="SignUpPanelContainer">
+              <div class="loginPanel">
+                <button>
+                    <router-link to="/">
+                    <img src="../assets/images/shopify-navbar.png" alt="shopify-navbar image" class="h-32 -mt-5">
+                    </router-link>
+                </button>
+                <h1 class="text-2xl font-bold">Create a Shopify account</h1>
+                <p class="panelCaptions mt-1">The ecommerce platform made for you</p>
+                
+                <!-- display email registration panel -->
+                <form class="mt-3" @submit.prevent="CreateAccount(userData)"  >
+                    <label>Email</label>
+                    <input type="email" required v-model="userData.email" class="formContainer" id="emailSignupInput">
+
+                    <!-- hidden by default  -->
+                    <p class="text-red-500 text-[0.9rem] hidden -px-2" id="EmailRegisteredWarn">Email is already registered</p>
+
+                    <!-- password registeration panel  -->
+                    <p class="pt-3">Password</p>
+                    <input type="password" 
+                    required v-model="userData.password" 
+                    class="formContainer" 
+                    @click="isWarningHidden = false" 
+                    >
+                    
+                    <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> -->
+                    <p class="leading-5 panelCaptions2 pt-5" id="pwSignupInputWarning" :class="{hidden: isWarningHidden}">Your password must be at least 5 characters, and can’t begin or end with a space.</p>
+                    <button type="submit" class="createAccBtn AccBtnGray">Create Shopify account</button>
+                </form>
+                <div class="pt-7">
+                    <p class="panelCaptions2">By proceeding, you agree to the <span class="signUpLink">Terms and Conditions</span></p>
+                    <p class="panelCaptions2">Already have a Shopify account? <span class="signUpLink"><router-link to="/login">Log in</router-link></span></p>
+                </div>
+
+                <div class="divRight loginPanelFooter">
+                    <ul class="container-flex-hor gap-8">
+                        <li>Help</li>
+                        <li>Privacy</li>
+                        <li>Terms</li>
+                    </ul>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</template>
 
 <style>
 .SignUpPanelContainer {
