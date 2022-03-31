@@ -65,6 +65,7 @@
 <script>
 import axios from "axios";
 export default {
+    name: "login",
     data () {
         return {
             userinfo: {
@@ -91,7 +92,7 @@ export default {
 
         },
 
-        handleSubmitPassword(userinfo) {
+        async handleSubmitPassword(userinfo) {
             axios.get('http://127.0.0.1:8000/api/users')
             .then((response) => {
                 // fetched data
@@ -109,13 +110,20 @@ export default {
                     // direct user when email and password matches
                     if (userinfo.email == email && userinfo.password == password) {
                         console.log("Login successful")
-                        tcase.push("pass")
+                        // const res = axios.post('http://localhost:8000/login', {
+                        //     email: email,
+                        //     password: password
+                        // });
+                        // i want to make a local storage session but I don't know how even after
+                        // watching a lot of tutorials 
+                        console.log()
                         this.$router.push(({
                             name: 'homepg',
                             params: {
                                 items: userinfo
-                            }
+                            },
                         }))
+                        //localStorage.setItem(token, response.data.token)
                         break;
                     }
                 }
@@ -128,7 +136,15 @@ export default {
 
             })
             .catch(error => console.log(error))
-        }
+        },
+
+        // async userRedirect(email, password) {
+        //     const res = await axios.post('http://localhost:8000/login', {
+        //         email: email,
+        //         password: password
+        //     });
+        //     console.log(res)
+        // }
     }
 }
 </script>
